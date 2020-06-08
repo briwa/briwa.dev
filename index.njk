@@ -1,3 +1,5 @@
+{% set maincss %}{% include "styles/main.css" %}{% endset %}
+{% set homecss %}{% include "styles/home.css" %}{% endset %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,47 +11,8 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
     <title>briwa.dev</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        h2 {
-            margin: 0.5em 0;
-        }
-
-        .center-page {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .center-page h1 {
-            font-size: 6em;
-        }
-
-        .center-page h2 {
-            font-size: 1.8em;
-        }
-
-        .links {
-            display: inline;
-        }
-
-        .links a, .links a:visited, .links a:active {
-            color: white;
-        }
-    </style>
+    <style>{{ maincss | cssmin | safe }}</style>
+    <style>{{ homecss | cssmin | safe }}</style>
 <body>
     <div class="center-page">
         <h1>Hello!</h1>
