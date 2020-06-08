@@ -1,8 +1,27 @@
----
-layout: posts.njk
----
-<ul>
-{%- for post in collections.post | reverse | slice(3) -%}
-  <li><a href="{{ post[0].url }}" rel="noreferrer" target="_self">{{ post[0].data.title }}</a></li>
-{%- endfor -%}
-</ul>
+{% set maincss %}{% include "styles/main.css" %}{% endset %}
+{% set blogcss %}{% include "styles/blog.css" %}{% endset %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Briwa">
+    <meta name="description" content="Briwa's personal website. Web developers usually have one. Or more.">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+    <style>{{ maincss | cssmin | safe }}</style>
+    <style>{{ blogcss | cssmin | safe }}</style>
+    <title>briwa.dev posts</title>
+<body>
+    <main class="content">
+        <nav>
+            <ul>
+            {%- for post in collections.post | reverse | slice(3) -%}
+                <li><a href="{{ post[0].url }}" rel="noreferrer" target="_self">{{ post[0].data.title }}</a></li>
+            {%- endfor -%}
+            </ul>
+        </nav>
+    </main>
+</body>
+</html>
