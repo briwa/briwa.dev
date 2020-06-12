@@ -1,0 +1,2 @@
+{% set maincss %}{% include "styles/shared/main.css" %}{% endset %}
+{% set index %}{% include "./index.css" %}{% endset %}{{ maincss | cssmin | safe }}{{ index | cssmin | safe }}
